@@ -1,8 +1,9 @@
 name: Latest Issues Workflow
 on:
   schedule:
-    # 每48小时运行一次
-    - cron: '0 * * * *'
+    # 这里的 '0 0 */2 * *' 才是每 48 小时运行一次
+    # '0 * * * *' 实际上是每小时运行一次
+    - cron: '0 0 */2 * *' 
   workflow_dispatch: # 允许手动触发
 
 jobs:
@@ -10,10 +11,16 @@ jobs:
     name: Update this repo's README with latest issues
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: gautamkrishnar/blog-post-workflow@master
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Pull in GitHub issues
+        uses: gautamkrishnar/blog-post-workflow@master
         with:
           comment_tag_name: "issues"
-          # 替换为你的 GitHub Issues RSS 地址
           feed_list: "https://github.com/xun16888/xun16888.github.io/issues.atom"
           template: "$newline - [$title]($url) ($date)"
+          
+          # --- 新增以下两行来解决 406 错误 ---
+          user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+          accept_header: "application/atom+xml, application/xml, text/xml, */*"
