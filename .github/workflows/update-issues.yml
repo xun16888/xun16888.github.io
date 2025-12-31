@@ -1,7 +1,7 @@
 name: Latest Issues Workflow
 on:
   schedule:
-    # 每12小时运行一次
+    # 每48小时运行一次
     - cron: '0 * * * *'
   workflow_dispatch: # 允许手动触发
 
