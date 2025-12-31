@@ -15,5 +15,5 @@ jobs:
         with:
           comment_tag_name: "issues"
           # 替换为你的 GitHub Issues RSS 地址
-          feed_list: "https://github.com/xun16888/xun16888.github.io//issues.atom"
+          feed_list: "https://github.com/xun16888/xun16888.github.io/issues.atom"
           template: "$newline - [$title]($url) ($date)"
