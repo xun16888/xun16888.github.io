@@ -16,5 +16,5 @@ jobs:
           comment_tag_name: "issues"
           # 替换为你的 GitHub Issues RSS 地址
           feed_list: "https://github.com/xun16888/xun16888.github.io//issues.atom"
-max_post_count: 20 # 显示最近的 20 条
+max_post_count: 10 # 显示最近的 10 条
           template: "$newline - [$title]($url) ($date)"
